@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h3>Search Tags</h3>
+  <hr>
+  <form method="GET" action="/wiki/search">
+      {%if pages.length > 0%}
+      <ul class="list-unstyled">
+        {% for page in pages %}
+         <li>{{ page | pageLink }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="form-group">
+      <label for="tags" class="col-sm-2 control-label">Search Tags</label>
+      <div class="col-sm-10">
+        <input name="tags" type="text" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  
+  </form>
+{% endblock %}
